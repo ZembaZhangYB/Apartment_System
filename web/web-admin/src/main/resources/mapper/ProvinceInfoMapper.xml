@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.model.mapper.ProvinceInfoMapper">
+<mapper namespace="com.atguigu.lease.web.admin.mapper.ProvinceInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.domain.ProvinceInfo">
+    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.entity.ProvinceInfo">
             <id property="id" column="id" />
             <result property="name" column="name" />
             <result property="createTime" column="create_time" />

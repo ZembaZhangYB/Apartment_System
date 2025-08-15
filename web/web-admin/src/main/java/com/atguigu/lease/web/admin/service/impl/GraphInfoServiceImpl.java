@@ -2,7 +2,7 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.web.admin.mapper.GraphInfoMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.domain.GraphInfo;
+import com.atguigu.lease.model.entity.GraphInfo;
 import com.atguigu.lease.model.service.GraphInfoService;
 import com.atguigu.lease.model.mapper.GraphInfoMapper;
 import org.springframework.stereotype.Service;

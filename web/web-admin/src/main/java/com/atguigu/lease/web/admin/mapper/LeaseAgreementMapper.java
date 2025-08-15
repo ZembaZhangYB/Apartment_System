@@ -1,6 +1,6 @@
 package com.atguigu.lease.web.admin.mapper;
 
-import com.atguigu.lease.model.domain.LeaseAgreement;
+import com.atguigu.lease.model.entity.LeaseAgreement;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.lease.model.mapper.LabelInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.domain.LabelInfo">
+    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.entity.LabelInfo">
             <id property="id" column="id" />
             <result property="type" column="type" />
             <result property="name" column="name" />

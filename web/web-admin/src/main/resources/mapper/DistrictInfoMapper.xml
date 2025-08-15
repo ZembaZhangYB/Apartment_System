@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.lease.model.mapper.DistrictInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.domain.DistrictInfo">
+    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.entity.DistrictInfo">
             <id property="id" column="id" />
             <result property="name" column="name" />
             <result property="cityId" column="city_id" />

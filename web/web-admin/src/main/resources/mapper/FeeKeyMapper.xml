@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.lease.model.mapper.FeeKeyMapper">
 
-    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.domain.FeeKey">
+    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.entity.FeeKey">
             <id property="id" column="id" />
             <result property="name" column="name" />
             <result property="createTime" column="create_time" />

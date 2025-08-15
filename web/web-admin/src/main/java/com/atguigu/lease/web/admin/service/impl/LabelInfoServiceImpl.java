@@ -2,7 +2,7 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.web.admin.mapper.LabelInfoMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.domain.LabelInfo;
+import com.atguigu.lease.model.entity.LabelInfo;
 import com.atguigu.lease.model.service.LabelInfoService;
 import com.atguigu.lease.model.mapper.LabelInfoMapper;
 import org.springframework.stereotype.Service;

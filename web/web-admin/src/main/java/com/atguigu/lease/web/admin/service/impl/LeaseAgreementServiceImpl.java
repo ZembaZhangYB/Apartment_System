@@ -2,7 +2,7 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.web.admin.mapper.LeaseAgreementMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.domain.LeaseAgreement;
+import com.atguigu.lease.model.entity.LeaseAgreement;
 import com.atguigu.lease.model.service.LeaseAgreementService;
 import com.atguigu.lease.model.mapper.LeaseAgreementMapper;
 import org.springframework.stereotype.Service;

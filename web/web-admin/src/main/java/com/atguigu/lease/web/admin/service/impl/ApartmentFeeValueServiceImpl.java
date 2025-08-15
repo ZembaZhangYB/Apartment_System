@@ -1,6 +1,6 @@
 package com.atguigu.lease.web.admin.service.impl;
 
-import com.atguigu.lease.model.domain.ApartmentFeeValue;
+import com.atguigu.lease.model.entity.ApartmentFeeValue;
 import com.atguigu.lease.model.mapper.ApartmentFeeValueMapper;
 import com.atguigu.lease.web.admin.mapper.ApartmentFeeValueMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

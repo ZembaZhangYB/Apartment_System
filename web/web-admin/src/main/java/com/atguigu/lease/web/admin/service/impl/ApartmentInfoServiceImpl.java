@@ -1,6 +1,6 @@
 package com.atguigu.lease.web.admin.service.impl;
 
-import com.atguigu.lease.model.domain.ApartmentInfo;
+import com.atguigu.lease.model.entity.ApartmentInfo;
 import com.atguigu.lease.model.mapper.ApartmentInfoMapper;
 import com.atguigu.lease.model.service.ApartmentInfoService;
 import com.atguigu.lease.web.admin.mapper.ApartmentInfoMapper;

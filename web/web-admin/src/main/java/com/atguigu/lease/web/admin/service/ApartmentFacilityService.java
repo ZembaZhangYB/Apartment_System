@@ -1,7 +1,7 @@
 package com.atguigu.lease.web.admin.service;
 
 
-import com.atguigu.lease.model.domain.ApartmentFacility;
+import com.atguigu.lease.model.entity.ApartmentFacility;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
