@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.lease.model.mapper.LeaseAgreementMapper">
+
+    <resultMap id="BaseResultMap" type="com.atguigu.lease.model.domain.LeaseAgreement">
+            <id property="id" column="id" />
+            <result property="phone" column="phone" />
+            <result property="name" column="name" />
+            <result property="identificationNumber" column="identification_number" />
+            <result property="apartmentId" column="apartment_id" />
+            <result property="roomId" column="room_id" />
+            <result property="leaseStartDate" column="lease_start_date" />
+            <result property="leaseEndDate" column="lease_end_date" />
+            <result property="leaseTermId" column="lease_term_id" />
+            <result property="rent" column="rent" />
+            <result property="deposit" column="deposit" />
+            <result property="paymentTypeId" column="payment_type_id" />
+            <result property="status" column="status" />
+            <result property="sourceType" column="source_type" />
+            <result property="additionalInfo" column="additional_info" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+            <result property="isDeleted" column="is_deleted" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,phone,name,identification_number,apartment_id,room_id,
+        lease_start_date,lease_end_date,lease_term_id,rent,deposit,
+        payment_type_id,status,source_type,additional_info,create_time,
+        update_time,is_deleted
+    </sql>
+</mapper>
