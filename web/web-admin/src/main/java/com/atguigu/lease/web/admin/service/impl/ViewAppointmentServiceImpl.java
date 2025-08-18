@@ -2,7 +2,7 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.lease.model.entity.ViewAppointment;
-import com.atguigu.lease.model.service.ViewAppointmentService;
+import com.atguigu.lease.web.admin.service.ViewAppointmentService;
 import com.atguigu.lease.web.admin.mapper.ViewAppointmentMapper;
 import org.springframework.stereotype.Service;
 

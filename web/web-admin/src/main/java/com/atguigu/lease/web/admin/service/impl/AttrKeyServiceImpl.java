@@ -3,8 +3,7 @@ package com.atguigu.lease.web.admin.service.impl;
 import com.atguigu.lease.web.admin.mapper.AttrKeyMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.lease.model.entity.AttrKey;
-import com.atguigu.lease.model.service.AttrKeyService;
-import com.atguigu.lease.model.mapper.AttrKeyMapper;
+import com.atguigu.lease.web.admin.service.AttrKeyService;
 import org.springframework.stereotype.Service;
 
 /**

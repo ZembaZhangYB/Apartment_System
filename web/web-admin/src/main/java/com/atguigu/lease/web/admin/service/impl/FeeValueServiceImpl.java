@@ -3,8 +3,7 @@ package com.atguigu.lease.web.admin.service.impl;
 import com.atguigu.lease.web.admin.mapper.FeeValueMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.lease.model.entity.FeeValue;
-import com.atguigu.lease.model.service.FeeValueService;
-import com.atguigu.lease.model.mapper.FeeValueMapper;
+import com.atguigu.lease.web.admin.service.FeeValueService;
 import org.springframework.stereotype.Service;
 
 /**
