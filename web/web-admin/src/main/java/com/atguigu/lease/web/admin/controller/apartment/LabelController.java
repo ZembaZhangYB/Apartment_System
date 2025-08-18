@@ -4,8 +4,10 @@ package com.atguigu.lease.web.admin.controller.apartment;
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.LabelInfo;
 import com.atguigu.lease.model.enums.ItemType;
+import com.atguigu.lease.web.admin.service.LabelInfoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +17,27 @@ import java.util.List;
 @RequestMapping("/admin/label")
 public class LabelController {
 
+    @Autowired
+    private LabelInfoService labelInfoService;
+
     @Operation(summary = "（根据类型）查询标签列表")
     @GetMapping("list")
     public Result<List<LabelInfo>> labelList(@RequestParam(required = false) ItemType type) {
-        return Result.ok();
+        if(labelInfoService.getLabelList(type) != null)  return Result.ok(labelInfoService.getLabelList(type));
+        else return Result.fail();
     }
 
     @Operation(summary = "新增或修改标签信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdateLabel(@RequestBody LabelInfo labelInfo) {
-
-        return Result.ok();
+        if(labelInfoService.saveOrUpdateLabelInfo(labelInfo))  return Result.ok();
+        else return Result.fail();
     }
 
     @Operation(summary = "根据id删除标签信息")
     @DeleteMapping("deleteById")
     public Result deleteLabelById(@RequestParam Long id) {
-        return Result.ok();
+        if(labelInfoService.deleteLabelInfo(id))  return Result.ok();
+        else return Result.fail();
     }
 }
