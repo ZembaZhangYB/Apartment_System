@@ -1,7 +1,10 @@
 package com.atguigu.lease.web.admin.service;
 
 import com.atguigu.lease.model.entity.FeeKey;
+import com.atguigu.lease.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
 * @author HP
@@ -12,4 +15,5 @@ public interface FeeKeyService extends IService<FeeKey> {
 
     public boolean deleteFeeKey(Long id);
 
+    public List<FeeKeyVo> listFeeKeyVo();
 }

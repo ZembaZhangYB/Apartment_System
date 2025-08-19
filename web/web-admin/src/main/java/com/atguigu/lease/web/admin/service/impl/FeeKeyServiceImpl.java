@@ -1,12 +1,15 @@
 package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.web.admin.mapper.FeeKeyMapper;
+import com.atguigu.lease.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.lease.model.entity.FeeKey;
 import com.atguigu.lease.web.admin.service.FeeKeyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author HP
@@ -26,6 +29,11 @@ public class FeeKeyServiceImpl extends ServiceImpl<FeeKeyMapper, FeeKey>
         luw.eq(FeeKey::getId, id).set(FeeKey::getIsDeleted, 1);
         int changeRow = feeKeyMapper.update(null, luw);
         return changeRow > 0;
+    }
+
+    @Override
+    public List<FeeKeyVo> listFeeKeyVo(){
+        return feeKeyMapper.listFeeInfo();
     }
 }
 

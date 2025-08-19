@@ -43,7 +43,8 @@ public class FeeController {
     @Operation(summary = "查询全部杂费名称和杂费值列表")
     @GetMapping("list")
     public Result<List<FeeKeyVo>> feeInfoList() {
-        return Result.ok();
+        if(feeKeyService.listFeeKeyVo() != null) return Result.ok(feeKeyService.listFeeKeyVo());
+        else return Result.fail();
     }
 
     @Operation(summary = "根据id删除杂费名称")

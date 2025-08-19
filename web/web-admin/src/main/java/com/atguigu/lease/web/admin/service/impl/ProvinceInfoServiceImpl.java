@@ -1,10 +1,14 @@
 package com.atguigu.lease.web.admin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.lease.model.entity.ProvinceInfo;
 import com.atguigu.lease.web.admin.service.ProvinceInfoService;
 import com.atguigu.lease.web.admin.mapper.ProvinceInfoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author HP
@@ -15,6 +19,16 @@ import org.springframework.stereotype.Service;
 public class ProvinceInfoServiceImpl extends ServiceImpl<ProvinceInfoMapper, ProvinceInfo>
     implements ProvinceInfoService{
 
+    @Autowired
+    private ProvinceInfoMapper provinceInfoMapper;
+
+    @Override
+    public List<ProvinceInfo> getProvinceInfo() {
+        LambdaQueryWrapper<ProvinceInfo> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(ProvinceInfo::getIsDeleted, 0);
+        List<ProvinceInfo> list = provinceInfoMapper.selectList(lqw);
+        return list;
+    }
 }
 
 
