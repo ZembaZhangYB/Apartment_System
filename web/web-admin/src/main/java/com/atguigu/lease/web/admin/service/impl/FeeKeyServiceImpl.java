@@ -1,9 +1,11 @@
 package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.web.admin.mapper.FeeKeyMapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.lease.model.entity.FeeKey;
 import com.atguigu.lease.web.admin.service.FeeKeyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +17,16 @@ import org.springframework.stereotype.Service;
 public class FeeKeyServiceImpl extends ServiceImpl<FeeKeyMapper, FeeKey>
     implements FeeKeyService{
 
+    @Autowired
+    private FeeKeyMapper feeKeyMapper;
+
+    @Override
+    public boolean deleteFeeKey(Long id) {
+        LambdaUpdateWrapper<FeeKey> luw = new LambdaUpdateWrapper<>();
+        luw.eq(FeeKey::getId, id).set(FeeKey::getIsDeleted, 1);
+        int changeRow = feeKeyMapper.update(null, luw);
+        return changeRow > 0;
+    }
 }
 
 

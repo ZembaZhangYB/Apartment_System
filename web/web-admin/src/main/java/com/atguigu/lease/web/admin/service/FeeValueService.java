@@ -9,5 +9,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-08-15 16:57:22
 */
 public interface FeeValueService extends IService<FeeValue> {
-
+    public boolean deleteFeeValue(Long id);
 }
