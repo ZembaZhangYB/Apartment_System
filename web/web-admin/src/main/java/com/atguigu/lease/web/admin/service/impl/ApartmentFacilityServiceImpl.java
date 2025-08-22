@@ -5,6 +5,7 @@ import com.atguigu.lease.web.admin.service.ApartmentFacilityService;
 import com.atguigu.lease.model.entity.ApartmentFacility;
 import com.atguigu.lease.web.admin.mapper.ApartmentFacilityMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApartmentFacilityServiceImpl extends ServiceImpl<ApartmentFacilityMapper, ApartmentFacility>
     implements ApartmentFacilityService {
+    @Autowired
+    private ApartmentFacilityMapper apartmentFacilityMapper;
 
 }
 

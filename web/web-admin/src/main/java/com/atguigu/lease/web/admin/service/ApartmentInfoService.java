@@ -1,7 +1,12 @@
 package com.atguigu.lease.web.admin.service;
 
 import com.atguigu.lease.model.entity.ApartmentInfo;
+import com.atguigu.lease.web.admin.vo.apartment.ApartmentItemVo;
+import com.atguigu.lease.web.admin.vo.apartment.ApartmentQueryVo;
+import com.atguigu.lease.web.admin.vo.apartment.ApartmentSubmitVo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
 * @author HP
@@ -9,5 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-08-15 16:56:48
 */
 public interface ApartmentInfoService extends IService<ApartmentInfo> {
+    public boolean saveOrUpdate(ApartmentSubmitVo apartmentSubmitVo);
 
+    public IPage<ApartmentItemVo> getApartmentInfoList(IPage<ApartmentItemVo> page, ApartmentQueryVo queryVo);
 }

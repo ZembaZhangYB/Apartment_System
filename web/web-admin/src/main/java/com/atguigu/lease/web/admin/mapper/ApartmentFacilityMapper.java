@@ -2,6 +2,7 @@ package com.atguigu.lease.web.admin.mapper;
 
 import com.atguigu.lease.model.entity.ApartmentFacility;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author HP
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2025-08-15 16:50:14
 * @Entity .domain.ApartmentFacility
 */
+@Mapper
 public interface ApartmentFacilityMapper extends BaseMapper<ApartmentFacility> {
 
 }
