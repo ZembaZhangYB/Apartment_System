@@ -30,6 +30,7 @@ public class RoomController {
     @Operation(summary = "保存或更新房间信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody RoomSubmitVo roomSubmitVo) {
+        roomInfoService.saveOrUpdate(roomSubmitVo);
         return Result.ok();
     }
 
@@ -50,19 +51,22 @@ public class RoomController {
     @Operation(summary = "根据id删除房间信息")
     @DeleteMapping("removeById")
     public Result removeById(@RequestParam Long id) {
+        roomInfoService.removeById(id);
         return Result.ok();
     }
 
     @Operation(summary = "根据id修改房间发布状态")
     @PostMapping("updateReleaseStatusById")
     public Result updateReleaseStatusById(Long id, ReleaseStatus status) {
+        roomInfoService.updateReleaseStatusById(id, status);
         return Result.ok();
     }
 
     @GetMapping("listBasicByApartmentId")
     @Operation(summary = "根据公寓id查询房间列表")
     public Result<List<RoomInfo>> listBasicByApartmentId(Long id) {
-        return Result.ok();
+
+        return Result.ok( roomInfoService.listBasicByApartmentId(id));
     }
 
 }
