@@ -2,13 +2,13 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.model.entity.*;
 import com.atguigu.lease.model.enums.ItemType;
-import com.atguigu.lease.web.admin.mapper.ApartmentFacilityMapper;
-import com.atguigu.lease.web.admin.mapper.ApartmentInfoMapper;
-import com.atguigu.lease.web.admin.mapper.FacilityInfoMapper;
+import com.atguigu.lease.web.admin.mapper.*;
 import com.atguigu.lease.web.admin.service.*;
+import com.atguigu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentQueryVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentSubmitVo;
+import com.atguigu.lease.web.admin.vo.fee.FeeValueVo;
 import com.atguigu.lease.web.admin.vo.graph.GraphVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
@@ -54,6 +54,14 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
 
     @Autowired
     private ApartmentFeeValueService apartmentFeeValueService;
+    @Autowired
+    private LabelInfoMapper labelInfoMapper;
+    @Autowired
+    private FacilityInfoMapper facilityInfoMapper;
+    @Autowired
+    private FeeValueMapper feeValueMapper;
+    @Autowired
+    private FeeKeyMapper feeKeyMapper;
 
     /**
      *
@@ -149,6 +157,68 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         }
         page.setRecords(aivs);
         return page;
+    }
+
+    @Autowired
+    private GraphInfoMapper graphInfoMapper;
+    @Autowired
+    private ApartmentLabelMapper apartmentLabelMapper;
+    @Autowired
+    private ApartmentFacilityMapper apartmentFacilityMapper;
+    @Autowired
+    private ApartmentFeeValueMapper apartmentFeeValueMapper;
+
+    @Override
+    public ApartmentDetailVo getApartmentDetailVoById(Long id) {
+        LambdaQueryWrapper<ApartmentInfo> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(ApartmentInfo::getId, id);
+        ApartmentDetailVo apartmentDetailVo = new ApartmentDetailVo();
+        List<GraphVo> graphVos = new ArrayList<>();
+        LambdaQueryWrapper<GraphInfo> gqw = new LambdaQueryWrapper<>();
+        gqw.eq(GraphInfo::getItemId, id);
+        List<GraphInfo> graphInfos = graphInfoMapper.selectList(gqw);
+        for(GraphInfo graphInfo : graphInfos){
+            graphVos.add(new GraphVo(graphInfo.getName(), graphInfo.getUrl()));
+        }
+        apartmentDetailVo.setGraphVoList(graphVos);
+
+        LambdaQueryWrapper<ApartmentLabel> lqw1 = new LambdaQueryWrapper<>();
+        List<ApartmentLabel> apartmentLabels = apartmentLabelMapper.selectList(lqw1.eq(ApartmentLabel::getApartmentId, id)
+                .eq(ApartmentLabel::getIsDeleted, 0));
+        List<LabelInfo> labelInfos = new ArrayList<>();
+        for(ApartmentLabel apartmentLabel : apartmentLabels){
+            LambdaQueryWrapper<LabelInfo> lqw2 = new LambdaQueryWrapper<>();
+            LabelInfo labelInfo = labelInfoMapper.selectOne(lqw2.eq(LabelInfo::getId, apartmentLabel.getLabelId()));
+            labelInfos.add(labelInfo);
+        }
+        apartmentDetailVo.setLabelInfoList(labelInfos);
+
+        LambdaQueryWrapper<ApartmentFacility> fqw = new LambdaQueryWrapper<>();
+        List<ApartmentFacility> apartmentFacilities = apartmentFacilityMapper.selectList(
+                fqw.eq(ApartmentFacility::getApartmentId, id)
+                    .eq(ApartmentFacility::getIsDeleted, 0)
+        );
+        List<FacilityInfo> facilityInfos = new ArrayList<>();
+        for(ApartmentFacility apartmentFacility : apartmentFacilities){
+            LambdaQueryWrapper<FacilityInfo> fqw2 = new LambdaQueryWrapper<>();
+            FacilityInfo facilityInfo = facilityInfoMapper.selectOne(fqw2.eq(FacilityInfo::getId, apartmentFacility.getFacilityId()));
+            facilityInfos.add(facilityInfo);
+        }
+        apartmentDetailVo.setFacilityInfoList(facilityInfos);
+
+        LambdaQueryWrapper<ApartmentFeeValue> fqw3 = new LambdaQueryWrapper<>();
+        List<ApartmentFeeValue> apartmentFeeValues = apartmentFeeValueMapper.selectList(fqw3.eq(ApartmentFeeValue::getApartmentId, id)
+                .eq(ApartmentFeeValue::getIsDeleted, 0));
+        List<FeeValueVo> feeValueVos = new ArrayList<>();
+        for(ApartmentFeeValue apartmentFeeValue : apartmentFeeValues){
+            LambdaQueryWrapper<FeeValue> fqw4 = new LambdaQueryWrapper<>();
+            FeeValue fv = feeValueMapper.selectOne(fqw4.eq(FeeValue::getIsDeleted, 0).eq(FeeValue::getId, apartmentFeeValue.getFeeValueId()));
+            LambdaQueryWrapper<FeeKey> fqw5 = new LambdaQueryWrapper<>();
+            feeValueVos.add(new FeeValueVo(feeKeyMapper.selectOne(fqw5.eq(FeeKey::getId, fv.getFeeKeyId())).getName()));
+        }
+        apartmentDetailVo.setFeeValueVoList(feeValueVos);
+
+        return apartmentDetailVo;
     }
 }
 
