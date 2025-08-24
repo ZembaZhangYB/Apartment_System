@@ -2,6 +2,7 @@ package com.atguigu.lease.web.admin.service.impl;
 
 import com.atguigu.lease.model.entity.*;
 import com.atguigu.lease.model.enums.ItemType;
+import com.atguigu.lease.model.enums.ReleaseStatus;
 import com.atguigu.lease.web.admin.mapper.*;
 import com.atguigu.lease.web.admin.service.*;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentDetailVo;
@@ -219,6 +220,22 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         apartmentDetailVo.setFeeValueVoList(feeValueVos);
 
         return apartmentDetailVo;
+    }
+
+    @Override
+    public boolean updateReleaseStatusById(Long id, ReleaseStatus status) {
+        LambdaUpdateWrapper<ApartmentInfo> lqw = new LambdaUpdateWrapper<>();
+        lqw.eq(ApartmentInfo::getId, id).eq(ApartmentInfo::getIsDeleted, 0)
+                .set(ApartmentInfo::getIsRelease, status.getCode());
+        apartmentInfoMapper.update(null, lqw);
+        return true;
+    }
+
+    @Override
+    public List<ApartmentInfo> listInfoByDistrictId(Long id) {
+        LambdaQueryWrapper<ApartmentInfo> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(ApartmentInfo::getDistrictId, id).eq(ApartmentInfo::getIsDeleted, 0);
+        return apartmentInfoMapper.selectList(lqw);
     }
 }
 

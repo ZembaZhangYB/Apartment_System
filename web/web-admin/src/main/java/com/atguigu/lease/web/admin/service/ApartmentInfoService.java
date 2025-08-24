@@ -1,6 +1,7 @@
 package com.atguigu.lease.web.admin.service;
 
 import com.atguigu.lease.model.entity.ApartmentInfo;
+import com.atguigu.lease.model.enums.ReleaseStatus;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.atguigu.lease.web.admin.vo.apartment.ApartmentQueryVo;
@@ -8,6 +9,9 @@ import com.atguigu.lease.web.admin.vo.apartment.ApartmentSubmitVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.security.interfaces.RSAKey;
+import java.util.List;
 
 /**
 * @author HP
@@ -20,4 +24,8 @@ public interface ApartmentInfoService extends IService<ApartmentInfo> {
     public IPage<ApartmentItemVo> getApartmentInfoList(IPage<ApartmentItemVo> page, ApartmentQueryVo queryVo);
 
     public ApartmentDetailVo getApartmentDetailVoById(Long id);
+
+    public boolean updateReleaseStatusById(Long id, ReleaseStatus status);
+
+    public List<ApartmentInfo> listInfoByDistrictId(Long id);
 }
